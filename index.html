@@ -158,20 +158,24 @@
   .plink{font-family:var(--mono);font-size:.78rem;padding:5px 12px;border:1px solid var(--line);border-radius:8px;transition:.2s}
   .plink:hover{background:var(--accent);color:var(--paper);border-color:var(--accent)}
 
-  /* project thumbnail */
+  /* project thumbnails — placed after text, reduced size */
+  .shots{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
   .thumb{
-    position:relative;display:block;margin:2px 0 16px;border-radius:10px;overflow:hidden;
+    position:relative;display:block;border-radius:9px;overflow:hidden;
     border:1px solid var(--line);background:#0d1522;cursor:zoom-in;line-height:0;
+    flex:1 1 240px;max-width:calc(50% - 6px);
   }
+  .thumb.wide{flex-basis:100%;max-width:100%}
   .thumb img{width:100%;height:auto;display:block;transition:transform .4s ease}
   .thumb:hover img{transform:scale(1.02)}
   .thumb::after{
-    content:"⤢";position:absolute;top:10px;right:10px;
-    width:30px;height:30px;border-radius:7px;display:grid;place-items:center;
-    background:rgba(13,21,34,.7);color:#fff;font-size:.9rem;
+    content:"⤢";position:absolute;top:8px;right:8px;
+    width:26px;height:26px;border-radius:6px;display:grid;place-items:center;
+    background:rgba(13,21,34,.7);color:#fff;font-size:.8rem;
     opacity:0;transition:opacity .25s;backdrop-filter:blur(4px);
   }
   .thumb:hover::after{opacity:1}
+  @media(max-width:520px){.thumb{max-width:100%;flex-basis:100%}}
 
   /* lightbox */
   .lb{
@@ -322,10 +326,15 @@
         <span class="when">Ene 2026 — Jun 2026</span>
       </div>
       <div class="stack">Python · CVXPY · FastAPI · React/Vite · Supabase · Docker</div>
-      <a class="thumb" data-gallery="finopt-wealth.png|Patrimonio proyectado con rango P25–P75;;finopt-allocation.png|Aportes mes a mes por cuenta">
-        <img src="finopt-wealth.png" alt="FinOpt — patrimonio proyectado" loading="lazy" width="1077" height="934">
-      </a>
       <p data-i18n="proj_finopt">Plataforma full-stack de planificación financiera basada en objetivos: simulación Monte Carlo, optimización convexa con restricciones probabilísticas (CVaR), búsqueda de horizonte mínimo de inversión con garantías probabilísticas, procesamiento asincrónico, progreso en tiempo real y tests de integración.</p>
+      <div class="shots">
+        <a class="thumb" data-gallery="finopt-wealth.png|Patrimonio proyectado con rango P25–P75;;finopt-allocation.png|Aportes mes a mes por cuenta">
+          <img src="finopt-wealth.png" alt="FinOpt — patrimonio proyectado" loading="lazy" width="1077" height="934">
+        </a>
+        <a class="thumb" data-gallery="finopt-allocation.png|Aportes mes a mes por cuenta;;finopt-wealth.png|Patrimonio proyectado con rango P25–P75">
+          <img src="finopt-allocation.png" alt="FinOpt — aportes mes a mes" loading="lazy" width="1081" height="988">
+        </a>
+      </div>
       <div class="plinks">
         <a class="plink" href="https://finopt-web.onrender.com/" target="_blank" rel="noopener" data-i18n="demo">↗ Demo web</a>
         <a class="plink" href="https://github.com/mfourier/fin-opt" target="_blank" rel="noopener" data-i18n="code">↗ Código</a>
@@ -338,10 +347,12 @@
         <span class="when">Abr 2025 — Jul 2025</span>
       </div>
       <div class="stack">Python · Scikit-learn · XGBoost · AutoGluon · Rich · Docker</div>
-      <a class="thumb" data-gallery="ufc-cli.png|Menú principal de la CLI (Rich);;ufc-prediction.png|Predicción con probabilidades y vector de features">
-        <img src="ufc-cli.png" alt="UFC Fight Predictor — CLI" loading="lazy" width="1017" height="1353">
-      </a>
       <p data-i18n="proj_ufc">Pipeline end-to-end de ML para predicción de resultados UFC: ETL, feature engineering y entrenamiento con Scikit-learn, XGBoost y AutoGluon, alcanzando <strong>66% de accuracy</strong> frente a un baseline de 55%. Arquitectura modular orientada a objetos y aplicación CLI con Rich empaquetada en Docker.</p>
+      <div class="shots">
+        <a class="thumb wide" data-gallery="ufc-cli.png|UFC Fight Predictor — CLI con Rich">
+          <img src="ufc-cli.png" alt="UFC Fight Predictor — CLI" loading="lazy" width="1400" height="418">
+        </a>
+      </div>
       <div class="plinks">
         <a class="plink" href="https://github.com/mfourier/ufc-predictor" target="_blank" rel="noopener">↗ ufc-predictor</a>
         <a class="plink" href="https://github.com/mfourier/ufc-predictor-v2" target="_blank" rel="noopener">↗ ufc-predictor-v2</a>
