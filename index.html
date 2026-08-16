@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maximiliano Lioi — Data Scientist</title>
 <meta name="description" content="Maximiliano Lioi — Data Scientist e Ingeniero Civil Matemático. Modelamiento bayesiano, machine learning y optimización.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Maximiliano Lioi — Data Scientist">
+<meta property="og:description" content="Data Scientist e Ingeniero Civil Matemático. Modelamiento bayesiano, machine learning y optimización matemática.">
+<meta property="og:image" content="https://mfourier.github.io/profile.jpeg">
+<meta property="og:url" content="https://mfourier.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maximiliano Lioi — Data Scientist">
+<meta name="twitter:description" content="Data Scientist e Ingeniero Civil Matemático. Modelamiento bayesiano, machine learning y optimización.">
+<meta name="twitter:image" content="https://mfourier.github.io/profile.jpeg">
+
+<!-- Favicon: ML initials -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231e4d8c'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='52' font-weight='600' fill='%23fbfcfd' text-anchor='middle'%3EML%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -53,15 +68,22 @@
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
   .brand{font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:var(--accent)}
   .navlinks{display:flex;gap:22px;align-items:center}
-  .navlinks a{font-size:.85rem;color:var(--muted);transition:color .2s}
+  .navlinks a{font-size:.85rem;color:var(--muted);transition:color .2s;position:relative}
   .navlinks a:hover{color:var(--ink)}
-  .toggle{
+  .navlinks a.active{color:var(--accent)}
+  .navlinks a.active::after{
+    content:"";position:absolute;left:0;right:0;bottom:-20px;height:2px;background:var(--accent);
+  }
+  .nav-btns{display:flex;gap:8px;align-items:center}
+  .toggle,.lang{
     border:1px solid var(--line);background:transparent;color:var(--muted);
-    width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.9rem;
+    height:34px;border-radius:999px;cursor:pointer;font-size:.9rem;
     display:grid;place-items:center;transition:.2s;
   }
-  .toggle:hover{border-color:var(--accent);color:var(--accent)}
-  @media(max-width:620px){.navlinks a:not(.cv){display:none}}
+  .toggle{width:34px}
+  .lang{width:auto;padding:0 12px;font-family:var(--mono);font-size:.76rem;letter-spacing:.03em}
+  .toggle:hover,.lang:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:640px){.navlinks a:not(.nav-persist){display:none}}
 
   /* ---- Hero ---- */
   header{padding:88px 0 56px;position:relative;overflow:hidden}
@@ -85,13 +107,15 @@
     font-size:clamp(1.4rem,3.5vw,1.9rem);color:var(--muted);margin-top:6px;
   }
   .lede{font-size:1.06rem;color:var(--muted);max-width:60ch;margin:26px 0 30px}
-  .contact{display:flex;flex-wrap:wrap;gap:10px}
+  .contact{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
   .chip{
     font-family:var(--mono);font-size:.8rem;padding:7px 13px;
     border:1px solid var(--line);border-radius:999px;color:var(--muted);
     display:inline-flex;gap:7px;align-items:center;transition:.2s;
   }
   .chip:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+  .chip-cv{border-color:var(--accent);color:var(--accent);font-weight:500}
+  .chip-cv:hover{background:var(--accent);color:var(--paper)}
 
   /* faint math grid signature */
   .grid-sig{
@@ -123,7 +147,7 @@
   @media(max-width:620px){.item{grid-template-columns:1fr;gap:6px}.item .when{padding-top:0}}
 
   /* ---- Projects ---- */
-  .proj{border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:18px;transition:.25s;background:var(--paper-2)}
+  .proj{border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:18px;transition:border-color .25s,transform .25s;background:var(--paper-2)}
   .proj:hover{border-color:var(--accent);transform:translateY(-2px)}
   .proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
   .proj h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.24rem}
@@ -139,7 +163,7 @@
   .skillrow:last-child{border-bottom:none}
   .skillrow .cat{font-weight:600;font-size:.95rem}
   .tags{display:flex;flex-wrap:wrap;gap:8px}
-  .tag{font-family:var(--mono);font-size:.78rem;padding:4px 10px;border-radius:6px;background:var(--paper-2);border:1px solid var(--line);color:var(--muted)}
+  .tag{font-family:var(--mono);font-size:.78rem;padding:4px 10px;border-radius:6px;background:var(--paper);border:1px solid var(--line);color:var(--muted)}
   @media(max-width:620px){.skillrow{grid-template-columns:1fr;gap:8px}}
 
   /* ---- Publication / certs ---- */
@@ -156,7 +180,13 @@
   footer .brand{margin-bottom:10px}
   footer p{font-size:.84rem;color:var(--muted)}
 
-  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+  /* ---- Entrance animations ---- */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto}
+    .reveal{opacity:1;transform:none}
+  }
 </style>
 </head>
 <body>
@@ -165,11 +195,14 @@
   <div class="wrap">
     <span class="brand">M. Lioi</span>
     <div class="navlinks">
-      <a href="#experiencia">Experiencia</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#publicaciones">Publicaciones</a>
-      <button class="toggle" id="themeToggle" aria-label="Cambiar tema">◑</button>
+      <a href="#experiencia" data-i18n="nav_exp">Experiencia</a>
+      <a href="#proyectos" data-i18n="nav_proj">Proyectos</a>
+      <a href="#habilidades" data-i18n="nav_skills">Habilidades</a>
+      <a href="#publicaciones" data-i18n="nav_pub">Publicaciones</a>
+      <div class="nav-btns nav-persist">
+        <button class="lang" id="langToggle" aria-label="Language">EN</button>
+        <button class="toggle" id="themeToggle" aria-label="Tema">◑</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -177,23 +210,24 @@
 <header>
   <div class="grid-sig"></div>
   <div class="wrap">
-    <div class="hero-top">
+    <div class="hero-top reveal">
       <div>
-        <p class="eyebrow">Ingeniero Civil Matemático · M.Sc. Matemáticas Aplicadas</p>
+        <p class="eyebrow" data-i18n="eyebrow">Ingeniero Civil Matemático · M.Sc. Matemáticas Aplicadas</p>
         <h1>Maximiliano&nbsp;Lioi</h1>
         <p class="role">Data Scientist</p>
       </div>
       <img class="avatar" src="profile.jpeg" alt="Maximiliano Lioi" width="200" height="200">
     </div>
-    <p class="lede">
+    <p class="lede reveal" data-i18n="lede">
       Trabajo en la intersección entre estadística bayesiana, machine learning y
       optimización matemática — desde calibrar modelos de inferencia hasta desplegar
       herramientas científicas en producción con Python.
     </p>
-    <div class="contact">
+    <div class="contact reveal">
       <a class="chip" href="mailto:maximiliano.lioi.b@gmail.com">✉ maximiliano.lioi.b@gmail.com</a>
       <a class="chip" href="https://github.com/mfourier" target="_blank" rel="noopener">↗ github.com/mfourier</a>
       <a class="chip" href="https://linkedin.com/in/mlioi/" target="_blank" rel="noopener">↗ linkedin.com/in/mlioi</a>
+      <a class="chip chip-cv" id="cvLink" href="cv-mlioi-es.pdf" target="_blank" rel="noopener" data-i18n="cv">⤓ Descargar CV</a>
     </div>
   </div>
 </header>
@@ -201,69 +235,69 @@
 <main class="wrap">
 
   <section id="experiencia">
-    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Experiencia</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2 class="sec-title" data-i18n="sec_exp">Experiencia</h2></div>
 
-    <div class="item">
-      <div class="when">Feb 2025 — presente<br>Santiago, CL</div>
+    <div class="item reveal">
+      <div class="when">Feb 2025 — <span data-i18n="present">presente</span><br>Santiago, CL</div>
       <div>
         <h3>NoiseGrasp</h3>
         <div class="org">Data Scientist</div>
         <ul>
-          <li>Calibro y valido modelos bayesianos de <strong>Marketing Mix Modeling</strong> para estimar el ROI incremental de canales publicitarios, ejecutando pipelines de ETL, entrenamiento y análisis para clientes de Latinoamérica y EE.UU.</li>
-          <li>Contribuyo a librerías internas de Python para modelamiento estadístico, extendiendo módulos de validación y reporting mediante Git, pull requests y code reviews.</li>
-          <li>Implementé <em>Simulation-Based Calibration</em> (SBC) para evaluar distribuciones posteriores y construir benchmarks de MCMC y aproximaciones variacionales.</li>
+          <li data-i18n="exp1a">Calibro y valido modelos bayesianos de <strong>Marketing Mix Modeling</strong> para estimar el ROI incremental de canales publicitarios, ejecutando pipelines de ETL, entrenamiento y análisis para clientes de Latinoamérica y EE.UU.</li>
+          <li data-i18n="exp1b">Contribuyo a librerías internas de Python para modelamiento estadístico, extendiendo módulos de validación y reporting mediante Git, pull requests y code reviews.</li>
+          <li data-i18n="exp1c">Implementé <em>Simulation-Based Calibration</em> (SBC) para evaluar distribuciones posteriores y construir benchmarks de MCMC y aproximaciones variacionales.</li>
         </ul>
       </div>
     </div>
 
-    <div class="item">
+    <div class="item reveal">
       <div class="when">Ene 2024 — Abr 2024<br>Santiago, CL</div>
       <div>
         <h3>Universidad de O'Higgins</h3>
-        <div class="org">Ayudante de Investigación</div>
+        <div class="org" data-i18n="role_ra">Ayudante de Investigación</div>
         <ul>
-          <li>Implementé algoritmos de programación convexa y no lineal con <em>SciPy</em> y <em>CVXPY</em> para proyecciones sobre conjuntos prox-regulares, en un proyecto Fondecyt.</li>
-          <li>Realicé experimentos numéricos para verificar el comportamiento de los algoritmos y apoyar el análisis de los métodos estudiados.</li>
+          <li data-i18n="exp2a">Implementé algoritmos de programación convexa y no lineal con <em>SciPy</em> y <em>CVXPY</em> para proyecciones sobre conjuntos prox-regulares, en un proyecto Fondecyt.</li>
+          <li data-i18n="exp2b">Realicé experimentos numéricos para verificar el comportamiento de los algoritmos y apoyar el análisis de los métodos estudiados.</li>
         </ul>
       </div>
     </div>
 
-    <div class="item">
+    <div class="item reveal">
       <div class="when">Ene 2023 — Abr 2023<br>Santiago, CL</div>
       <div>
         <h3>Pedro Donoso Ingenieros Asociados</h3>
         <div class="org">Data Scientist Trainee</div>
         <ul>
-          <li>Desarrollé modelos de <strong>regresión espacial</strong> para predecir precios inmobiliarios, abordando autocorrelación y heterogeneidad espacial con datos del American Community Survey en R.</li>
-          <li>Procesé y transformé datos con Python y Pandas, construyendo variables para caracterizar servicios de transporte público a partir de ADATRAP.</li>
+          <li data-i18n="exp3a">Desarrollé modelos de <strong>regresión espacial</strong> para predecir precios inmobiliarios, abordando autocorrelación y heterogeneidad espacial con datos del American Community Survey en R.</li>
+          <li data-i18n="exp3b">Procesé y transformé datos con Python y Pandas, construyendo variables para caracterizar servicios de transporte público a partir de ADATRAP.</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="proyectos">
-    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Proyectos</h2></div>
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2 class="sec-title" data-i18n="sec_proj">Proyectos</h2></div>
 
-    <div class="proj">
+    <div class="proj reveal">
       <div class="proj-top">
         <h3>FinOpt</h3>
         <span class="when">Ene 2026 — Jun 2026</span>
       </div>
       <div class="stack">Python · CVXPY · FastAPI · React/Vite · Supabase · Docker</div>
-      <p>Plataforma full-stack de planificación financiera basada en objetivos: simulación Monte Carlo, optimización convexa con restricciones probabilísticas (CVaR), búsqueda de horizonte mínimo de inversión con garantías probabilísticas, procesamiento asincrónico, progreso en tiempo real y tests de integración.</p>
+      <p data-i18n="proj_finopt">Plataforma full-stack de planificación financiera basada en objetivos: simulación Monte Carlo, optimización convexa con restricciones probabilísticas (CVaR), búsqueda de horizonte mínimo de inversión con garantías probabilísticas, procesamiento asincrónico, progreso en tiempo real y tests de integración.</p>
       <div class="plinks">
-        <a class="plink" href="https://finopt-web.onrender.com/" target="_blank" rel="noopener">↗ Demo web</a>
-        <a class="plink" href="https://github.com/mfourier/fin-opt" target="_blank" rel="noopener">↗ Código</a>
+        <a class="plink" href="https://finopt-web.onrender.com/" target="_blank" rel="noopener" data-i18n="demo">↗ Demo web</a>
+        <a class="plink" href="https://github.com/mfourier/fin-opt" target="_blank" rel="noopener" data-i18n="code">↗ Código</a>
       </div>
     </div>
 
-    <div class="proj">
+    <div class="proj reveal">
       <div class="proj-top">
         <h3>UFC Fight Predictor</h3>
         <span class="when">Abr 2025 — Jul 2025</span>
       </div>
       <div class="stack">Python · Scikit-learn · XGBoost · AutoGluon · Rich · Docker</div>
-      <p>Pipeline end-to-end de ML para predicción de resultados UFC: ETL, feature engineering y entrenamiento con Scikit-learn, XGBoost y AutoGluon, alcanzando <strong>66% de accuracy</strong> frente a un baseline de 55%. Arquitectura modular orientada a objetos y aplicación CLI con Rich empaquetada en Docker.</p>
+      <p data-i18n="proj_ufc">Pipeline end-to-end de ML para predicción de resultados UFC: ETL, feature engineering y entrenamiento con Scikit-learn, XGBoost y AutoGluon, alcanzando <strong>66% de accuracy</strong> frente a un baseline de 55%. Arquitectura modular orientada a objetos y aplicación CLI con Rich empaquetada en Docker.</p>
       <div class="plinks">
         <a class="plink" href="https://github.com/mfourier/ufc-predictor" target="_blank" rel="noopener">↗ ufc-predictor</a>
         <a class="plink" href="https://github.com/mfourier/ufc-predictor-v2" target="_blank" rel="noopener">↗ ufc-predictor-v2</a>
@@ -272,19 +306,19 @@
   </section>
 
   <section id="educacion">
-    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Educación</h2></div>
-    <div class="item">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2 class="sec-title" data-i18n="sec_edu">Educación</h2></div>
+    <div class="item reveal">
       <div class="when">Mar 2024 — Ene 2025</div>
       <div>
-        <h3>Magíster en Ciencias de la Ingeniería</h3>
-        <div class="org">Universidad de Chile · Mención Matemáticas Aplicadas</div>
+        <h3 data-i18n="edu1">Magíster en Ciencias de la Ingeniería</h3>
+        <div class="org" data-i18n="edu1org">Universidad de Chile · Mención Matemáticas Aplicadas</div>
         <ul><li>GPA 6.9 / 7.0</li></ul>
       </div>
     </div>
-    <div class="item">
+    <div class="item reveal">
       <div class="when">Mar 2018 — Ene 2025</div>
       <div>
-        <h3>Ingeniero Civil Matemático</h3>
+        <h3 data-i18n="edu2">Ingeniero Civil Matemático</h3>
         <div class="org">Universidad de Chile</div>
         <ul><li>GPA 7.0 / 7.0</li></ul>
       </div>
@@ -292,36 +326,37 @@
   </section>
 
   <section id="habilidades">
-    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Habilidades técnicas</h2></div>
-    <div class="skillrow">
-      <div class="cat">Lenguajes</div>
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2 class="sec-title" data-i18n="sec_skills">Habilidades técnicas</h2></div>
+    <div class="skillrow reveal">
+      <div class="cat" data-i18n="skill_lang">Lenguajes</div>
       <div class="tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span><span class="tag">Bash</span></div>
     </div>
-    <div class="skillrow">
-      <div class="cat">ML, Estadística y Optimización</div>
+    <div class="skillrow reveal">
+      <div class="cat" data-i18n="skill_ml">ML, Estadística y Optimización</div>
       <div class="tags"><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">SciPy</span><span class="tag">Scikit-learn</span><span class="tag">AutoGluon</span><span class="tag">PyTorch</span><span class="tag">CVXPY</span><span class="tag">Gurobi</span><span class="tag">PyMC</span><span class="tag">MLflow</span></div>
     </div>
-    <div class="skillrow">
-      <div class="cat">Desarrollo y Frameworks</div>
-      <div class="tags"><span class="tag">GitHub</span><span class="tag">Linux</span><span class="tag">Docker</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Supabase</span><span class="tag">Jupyter</span><span class="tag">VS Code</span></div>
+    <div class="skillrow reveal">
+      <div class="cat" data-i18n="skill_dev">Desarrollo y Frameworks</div>
+      <div class="tags"><span class="tag">GitHub</span><span class="tag">Linux</span><span class="tag">Docker</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Supabase</span><span class="tag">Jupyter</span><span class="tag">VS Code</span><span class="tag">Anaconda</span></div>
     </div>
-    <div class="skillrow">
-      <div class="cat">Idiomas</div>
-      <div class="tags"><span class="tag">Español (nativo)</span><span class="tag">Inglés B2 · TOEFL ITP</span></div>
+    <div class="skillrow reveal">
+      <div class="cat" data-i18n="skill_idiom">Idiomas</div>
+      <div class="tags"><span class="tag" data-i18n="lang_es">Español (nativo)</span><span class="tag">Inglés B2 · TOEFL ITP</span></div>
     </div>
   </section>
 
   <section id="publicaciones">
-    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Publicaciones</h2></div>
-    <div class="pub">
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2 class="sec-title" data-i18n="sec_pub">Publicaciones</h2></div>
+    <div class="pub reveal">
       Garrido, J.G., <strong>Lioi, M.</strong> &amp; Vilches, E. — <em>Inexact Catching-Up Algorithm for Moreau's Sweeping Processes.</em> Applied Mathematics &amp; Optimization, <strong>92</strong>, 34 (2025).
       <br><a href="https://doi.org/10.1007/s00245-025-10307-w" target="_blank" rel="noopener">↗ doi.org/10.1007/s00245-025-10307-w</a>
+      &nbsp; <a href="https://arxiv.org/abs/2501.04781" target="_blank" rel="noopener">↗ arXiv:2501.04781</a>
     </div>
   </section>
 
   <section id="certificados">
-    <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Certificados</h2></div>
-    <div class="certs">
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2 class="sec-title" data-i18n="sec_cert">Certificados</h2></div>
+    <div class="certs reveal">
       <div class="cert"><a href="https://www.coursera.org/account/accomplishments/records/HB2BHP9D48ZG" target="_blank" rel="noopener">Deep Learning with PyTorch</a><span class="src">Coursera</span></div>
       <div class="cert"><a href="https://www.coursera.org/account/accomplishments/records/NXYW9SC14T6R" target="_blank" rel="noopener">Applied ML with Python</a><span class="src">Coursera</span></div>
       <div class="cert"><a href="https://www.coursera.org/account/accomplishments/specialization/YS2Y6VBY498X" target="_blank" rel="noopener">Data Analysis with R</a><span class="src">Coursera</span></div>
@@ -333,20 +368,91 @@
 <footer>
   <div class="wrap">
     <div class="brand">M. Lioi</div>
-    <p>Santiago de Chile · Diseñado y construido con cuidado.</p>
+    <p data-i18n="footer">Santiago de Chile · Diseñado y construido con cuidado.</p>
   </div>
 </footer>
 
 <script>
-  const t=document.getElementById('themeToggle');
-  const saved=localStorage.getItem('theme');
-  if(saved) document.documentElement.setAttribute('data-theme',saved);
-  t.addEventListener('click',()=>{
-    const cur=document.documentElement.getAttribute('data-theme')==='dark'?'':'dark';
-    if(cur) document.documentElement.setAttribute('data-theme',cur);
-    else document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('theme',cur);
+/* ---------- i18n ---------- */
+const I18N = {
+  en: {
+    nav_exp:"Experience", nav_proj:"Projects", nav_skills:"Skills", nav_pub:"Publications",
+    eyebrow:"Mathematical Engineer · M.Sc. Applied Mathematics",
+    lede:"I work at the intersection of Bayesian statistics, machine learning and mathematical optimization — from calibrating inference models to deploying scientific tools in production with Python.",
+    cv:"⤓ Download CV", present:"present", role_ra:"Research Assistant",
+    sec_exp:"Experience", sec_proj:"Projects", sec_edu:"Education", sec_skills:"Technical skills", sec_pub:"Publications", sec_cert:"Certificates",
+    exp1a:"I calibrate and validate Bayesian <strong>Marketing Mix Modeling</strong> models to estimate the incremental ROI of advertising channels, running ETL, training and analysis pipelines for clients in Latin America and the U.S.",
+    exp1b:"I contribute to internal Python libraries for statistical modeling, extending validation and reporting modules through Git, pull requests and code reviews.",
+    exp1c:"I implemented <em>Simulation-Based Calibration</em> (SBC) to assess posterior distributions and build benchmarks of MCMC and variational approximations.",
+    exp2a:"I implemented convex and nonlinear programming algorithms with <em>SciPy</em> and <em>CVXPY</em> for projections onto prox-regular sets, within a Fondecyt project.",
+    exp2b:"I ran numerical experiments to verify the behavior of the algorithms and support the analysis of the methods studied.",
+    exp3a:"I developed <strong>spatial regression</strong> models to predict real estate prices, addressing spatial autocorrelation and heterogeneity with American Community Survey data in R.",
+    exp3b:"I processed and transformed data with Python and Pandas, building variables to characterize public transportation services from ADATRAP.",
+    proj_finopt:"Full-stack goal-based financial planning platform: Monte Carlo simulation, convex optimization with probabilistic constraints (CVaR), minimum investment horizon search with probabilistic guarantees, asynchronous processing, real-time progress and integration tests.",
+    proj_ufc:"End-to-end ML pipeline for predicting UFC fight outcomes: ETL, feature engineering and training with Scikit-learn, XGBoost and AutoGluon, reaching <strong>66% accuracy</strong> vs a 55% baseline. Modular object-oriented architecture and a CLI app with Rich packaged in Docker.",
+    demo:"↗ Live demo", code:"↗ Code",
+    edu1:"M.Sc. in Engineering Sciences", edu1org:"University of Chile · Applied Mathematics",
+    edu2:"Mathematical Engineering",
+    skill_lang:"Languages", skill_ml:"ML, Statistics & Optimization", skill_dev:"Development & Frameworks", skill_idiom:"Languages (spoken)",
+    lang_es:"Spanish (native)",
+    footer:"Santiago, Chile · Designed and built with care."
+  }
+};
+// snapshot original Spanish text as the "es" dictionary
+const ES = {};
+document.querySelectorAll('[data-i18n]').forEach(el=>{ ES[el.dataset.i18n] = el.innerHTML; });
+
+function applyLang(lang){
+  const dict = lang==='en' ? I18N.en : ES;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.dataset.i18n;
+    if(dict[k]!==undefined) el.innerHTML = dict[k];
   });
+  document.documentElement.lang = lang;
+  document.getElementById('langToggle').textContent = lang==='en' ? 'ES' : 'EN';
+  const cv = document.getElementById('cvLink');
+  cv.href = lang==='en' ? 'cv-mlioi-eng.pdf' : 'cv-mlioi-es.pdf';
+  localStorage.setItem('lang',lang);
+}
+let curLang = localStorage.getItem('lang') || 'es';
+if(curLang==='en') applyLang('en');
+document.getElementById('langToggle').addEventListener('click',()=>{
+  curLang = curLang==='en' ? 'es' : 'en';
+  applyLang(curLang);
+});
+
+/* ---------- theme ---------- */
+const t=document.getElementById('themeToggle');
+const saved=localStorage.getItem('theme');
+if(saved) document.documentElement.setAttribute('data-theme',saved);
+t.addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme')==='dark'?'':'dark';
+  if(cur) document.documentElement.setAttribute('data-theme',cur);
+  else document.documentElement.removeAttribute('data-theme');
+  localStorage.setItem('theme',cur);
+});
+
+/* ---------- entrance reveal ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- scroll-spy ---------- */
+const navMap = {experiencia:'nav_exp', proyectos:'nav_proj', habilidades:'nav_skills', publicaciones:'nav_pub'};
+const spied = Object.keys(navMap).map(id=>document.getElementById(id));
+const links = {};
+document.querySelectorAll('.navlinks a[href^="#"]').forEach(a=>{ links[a.getAttribute('href').slice(1)] = a; });
+const spy = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      Object.values(links).forEach(l=>l.classList.remove('active'));
+      const id = e.target.id;
+      if(links[id]) links[id].classList.add('active');
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+spied.forEach(s=>s && spy.observe(s));
 </script>
 </body>
 </html>
